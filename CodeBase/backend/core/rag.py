@@ -8,12 +8,17 @@ from core.roles import get_prompt_by_role
 
 # Initialize Global Components
 # Using local persistence for ChromaDB
-DB_PATH = "./backend/chroma_db" if os.path.exists("./backend/chroma_db") else "./chroma_db"
+# rag.py is in backend/core/rag.py
+# We need to reach backend/chroma_db
+CORE_DIR = os.path.dirname(os.path.abspath(__file__))
+BACKEND_DIR = os.path.dirname(CORE_DIR)
+DB_PATH = os.path.join(BACKEND_DIR, "chroma_db")
 
 embedding_function = HuggingFaceEmbeddings(model_name="all-MiniLM-L6-v2")
 vectorstore = Chroma(
     persist_directory=DB_PATH, 
-    embedding_function=embedding_function
+    embedding_function=embedding_function,
+    collection_name="omniassist_rag"
 )
 retriever = vectorstore.as_retriever()
 

@@ -7,6 +7,9 @@ Successfully built and verified the **Phase 1a MVP**: a Localhost RAG API using 
 - **Backend**: FastAPI
 - **Ingestion**: Custom Strategy (per `PDF_Chunking_Strategy.md`)
 
+> [!TIP]
+> **New to this?** Check out the [Phase 1a Execution Guide](Phase1a_Execution_Guide.md) for a beginner-friendly setup tutorial.
+
 ## Changes Implemented
 
 ### 1. Architecture
@@ -19,8 +22,10 @@ Successfully built and verified the **Phase 1a MVP**: a Localhost RAG API using 
 - **`backend/core/roles.py`**: System prompts for "Learner" and "Support Engineer" roles.
 - **`backend/app.py`**: FastAPI server exposing `POST /chat` and `POST /ingest`.
 
-### 3. Dependencies
-- Fixed `LangChain` versioning hell by strictly pinning to the **stable 0.2.x stack** (`langchain==0.2.16`, `langchain-core==0.2.38`) to ensure compatibility with `langchain-groq` and `langchain-chroma`.
+### 3. Dependencies & Stability
+- **Frozen Dependencies**: `requirements.txt` is now fully PINNED (146 packages) using `pip freeze` to guarantee reproducibility.
+- **Path Fixes**: Hardcoded relative paths in `rag.py` and `ingestion.py` were replaced with robust, absolute path calculations to prevent `Collection not found` errors.
+- **Collection**: Standardized ChromaDB collection name to `omniassist_rag`.
 
 ## Verification Results
 

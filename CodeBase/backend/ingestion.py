@@ -5,8 +5,10 @@ from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 import re
 
-DATA_PATH = "./backend/data"
-DB_PATH = "./backend/chroma_db"
+# Get absolute path to backend directory
+BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+DATA_PATH = os.path.join(BACKEND_DIR, "backend", "data")
+DB_PATH = os.path.join(BACKEND_DIR, "backend", "chroma_db")
 
 def get_splitter_for_document(filename):
     """Return appropriate splitter based on document type."""
@@ -127,7 +129,8 @@ def ingest_docs():
     vectorstore = Chroma.from_documents(
         documents=all_chunks,
         embedding=embedding_function,
-        persist_directory=DB_PATH
+        persist_directory=DB_PATH,
+        collection_name="omniassist_rag"
     )
     print(f"Successfully ingested into {DB_PATH}")
 
