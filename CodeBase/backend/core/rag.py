@@ -29,6 +29,7 @@ llm = ChatGroq(
 )
 
 def get_rag_chain(role: str):
+    print(f"Anki: Test: {DB_PATH}")
     prompt = get_prompt_by_role(role)
     document_chain = create_stuff_documents_chain(llm, prompt)
     retrieval_chain = create_retrieval_chain(retriever, document_chain)

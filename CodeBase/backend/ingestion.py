@@ -7,8 +7,8 @@ import re
 
 # Get absolute path to backend directory
 BACKEND_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-DATA_PATH = os.path.join(BACKEND_DIR, "backend", "data")
-DB_PATH = os.path.join(BACKEND_DIR, "backend", "chroma_db")
+DATA_PATH = os.path.join(BACKEND_DIR, "contextsource", "data")
+DB_PATH = os.path.join(BACKEND_DIR, "contextsource", "chroma_db")
 
 def get_splitter_for_document(filename):
     """Return appropriate splitter based on document type."""

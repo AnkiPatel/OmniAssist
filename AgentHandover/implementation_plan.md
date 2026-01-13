@@ -7,7 +7,7 @@ The solution must be "Agent-Ready" - deterministic, clear, and using the existin
 ## Constraints & Context
 - **Root Directory**: `CodeBase`
 - **Virtual Environment**: `.venv` (Existing, must be preserved)
-- **Data Source**: `../KnowledgeBase` (Contains PDF/DOCX) -> copy to `CodeBase/backend/data`
+- **Data Source**: `../KnowledgeBase` (Contains PDF/DOCX) -> copy to `CodeBase/contextsource/data`
 - **Vector DB**: `ChromaDB` (Local persistence: `./backend/chroma_db`)
 - **LLM**: `Groq` (Free Tier usage)
 - **Embeddings**: `HuggingFace` (Local)
@@ -54,8 +54,8 @@ tiktoken
 **Action**: `pip install -r backend/requirements.txt` (using `.venv`).
 
 ### 3. Data Setup
-**Action**: Copy contents of `../KnowledgeBase` to `CodeBase/backend/data/`.
-**Verify**: List `CodeBase/backend/data/` to confirm files.
+**Action**: Copy contents of `../KnowledgeBase` to `CodeBase/contextsource/data/`.
+**Verify**: List `CodeBase/contextsource/data/` to confirm files.
 
 ### 4. Implementation Specs
 
